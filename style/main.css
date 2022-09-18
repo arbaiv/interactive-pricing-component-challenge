@@ -65,9 +65,6 @@ ol[role="list"] {
 html:focus-within {
   scroll-behavior: smooth;
 }
-html, body {
-height: 100%;
-}
 body {
 line-height: 1.5;
 text-rendering: optimizeSpeed;
@@ -166,6 +163,7 @@ body{
   border-radius: 1rem;
   margin-top: 32px;
   padding-top: 38px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .page-pricing {
   display: flex;
@@ -185,7 +183,6 @@ body{
   width: 100%;
 }
 /* Custom Slider */
-/* Hides the default browser design */
 input[type=range] {
   -webkit-appearance: none;
   width: 100%;
@@ -208,6 +205,7 @@ input[type=range]::-webkit-slider-thumb {
   cursor: pointer;
   margin-top: -16px;
   box-shadow: 0px 15px 20px 4px #A5F3EB;
+  transition: all 0.1s linear;
 }
 input[type=range]::-moz-range-thumb {
   border: 0;
@@ -232,7 +230,7 @@ input[type=range]::-webkit-slider-thumb:active {
   transform: translateY(-14px);
   pointer-events: none
 }
-/* Slider range  */
+/* Style of the Slider track */
 input[type=range]::-webkit-slider-runnable-track {
   width: 100%;
   height: 8.4px;
@@ -251,8 +249,6 @@ input[type=range]::-moz-range-track {
   border-radius: 1.3px;
   border: 0.2px solid #010101;
 } 
-
-
 .pricing {
   margin-top: 34px;
   order: 2;
@@ -270,23 +266,74 @@ input[type=range]::-moz-range-track {
   align-items: center;
   order: 3;
 }
-.discount-tgl-btn {
+/* Discount Toggle button */
+input[type="checkbox"].discount-tgl {
+  opacity: 0;
+}
+input[type="checkbox"].discount-tgl + label{
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0px 10px;
+}
+input[type="checkbox"].discount-tgl + label::before {
+  content: "";
   width: 44px;
-  height: 22px;
+  height: 20px;
   background-color: var(--toggle-btn-bg-clr);
-  margin: 0px 15px 0px;
   border-radius: 16px;
-  border: none;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+input[type="checkbox"].discount-tgl + label::after {
+  position: absolute;
+  left: 4px;
+  content: "";
+  width: 14px;
+  height: 14px;
+  background-color: var(--white);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.4s ease-out;
+}
+input[type="checkbox"].discount-tgl + label:hover::before {
+  background-color: var(--soft-cyan);
+}
+input[type="checkbox"].discount-tgl:checked + label::before{
+  background-color: var(--soft-cyan);
+}
+input[type="checkbox"].discount-tgl:checked + label::after{
+  transform: translateX(150%);
+}
+.discount-amount-sec{
+  position: relative;
 }
 .discount-amount {
+  position: absolute;
+  transform: translate(-185%, -37px);
   margin-left: 10px;
-  width: 42px;
+  padding: 0px 5px;
+  width: fit-content;
   height: 20px;
   background-color: var(--discount-bg-clr);
   color: var(--discount-text-clr);
   border-radius: 12px;
   border: none;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: var(--fw-800);
+}
+.discount-amount::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--discount-bg-clr) transparent transparent transparent;
+}
+.discount-text {
+  display: none;
 }
 .start-trial-sec {
   padding: 28px 24px 38px;
@@ -313,9 +360,26 @@ input[type=range]::-moz-range-track {
   color: var(--cta-text-clr);
   border: none;
   cursor: pointer;
+  transition: all 0.1s linear;
 }
 .cta-button:hover {
   color: var(--white);
+}
+@media (min-width: 31em){
+  input[type="checkbox"].discount-tgl + label{
+    margin: 0px 14px;
+  }
+  .discount-amount-sec{
+    position: static;
+  }
+  .discount-amount {
+    position: static;
+    transform: none;
+  }
+  .discount-amount::after {
+    content: none;
+    position: static;
+  }
 }
 @media (min-width:50em){
   .page-view, .pricing, .slider, .discount-sec {
@@ -344,6 +408,9 @@ input[type=range]::-moz-range-track {
     display: flex;
     align-items: center;
   }
+  .discount-text {
+    display: inline;
+  }
   .start-trial-sec {
     padding: 28px 48px 38px;
     display: flex;
@@ -353,6 +420,9 @@ input[type=range]::-moz-range-track {
   }
   .utilities {
     justify-content: flex-start;
+  }
+  .utilities-sec > * + * {
+    margin-top: 12px;
   }
   .cta-sec{
     margin-top: 0px;

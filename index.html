@@ -32,10 +32,10 @@
             <div class="container component">
                 <div class="page-pricing">
                     <div class="page-view">
-                        <p>100K PAGEVIEWS</p>
+                        <p><span id="pageView">100K</span> PAGEVIEWS</p>
                     </div>
                     <div class="pricing">
-                        <p><span class="price-design">&#36;16.00</span> /month</p>
+                        <p><span class="price-design">&#36;<span id="priceValue">16.00</span></span> /month</p>
                     </div>
                     <div class="slider">
                         <input type="range" min="0" max="100" value="50" step="25" id="slider-input">
@@ -43,9 +43,14 @@
                     </div>
                     <div class="discount-sec">
                         <p>Monthly Billing</p>
-                        <button class="discount-tgl-btn"></button>
+                        <div id="discount-btn-sec">
+                            <input type="checkbox" id="discount-check" class="discount-tgl visually-hidden"></input>
+                            <label for="discount-check"></label>
+                        </div>
                         <p>Yearly Billing</p>
-                        <button class="discount-amount">-25&#37;</button>
+                        <div class="discount-amount-sec">
+                            <button class="discount-amount">-25&#37;<span class="discount-text">discount</span></button>
+                        </div>
                     </div>
                 </div>
                 <div class="start-trial-sec">
