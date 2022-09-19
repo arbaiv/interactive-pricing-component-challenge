@@ -51,9 +51,9 @@ Users should be able to:
 
 ### What I learned
 
-- Create custom range slider
+- Create a custom range slider
 - Make range slider accessible
-- Create custom css toggle button and animation to it
+- Create a custom CSS toggle button and add animation to it
 
 ### Continued development
 
