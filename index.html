@@ -9,15 +9,12 @@
     <meta name="description" content="This is the Interactive Pricing Component challenge by Frontend Mentor">
     <meta name="keywords" content="web development, frontend, frontend mentor">
     <meta name="author" content="Abdur Rahaman">
-    <!--  Add details that you want to show in social media below - remove this comment -->
-    <meta property="og:title" content="Add title name"/>
-    <meta property="og:description" content="Add description"/>
+    <meta property="og:title" content="Interactive Pricing Component"/>
+    <meta property="og:description" content="This is the Interactive Pricing Component challenge by Frontend Mentor"/>
     <meta property="og:image" content="Add image url"/>
-    <!-- Link for Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <!-- Main stylesheet of the page -->
     <link href="style/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -31,25 +28,25 @@
         <section>
             <div class="container component">
                 <div class="page-pricing">
-                    <div class="page-view">
+                    <div class="page-view" aria-live="assertive" aria-atomic="true">
                         <p><span id="pageView">100K</span> PAGEVIEWS</p>
                     </div>
                     <div class="pricing">
-                        <p><span class="price-design">&#36;<span id="priceValue">16.00</span></span> /month</p>
+                        <p aria-live="assertive" aria-atomic="true"><span class="price-design">&#36;<span id="priceValue">16.00</span></span> /month</p>
                     </div>
                     <div class="slider">
-                        <input type="range" min="0" max="100" value="50" step="25" id="slider-input">
+                        <input type="range" min="0" max="100" value="50" step="25" id="slider-input" aria-label="Slider for monthly pageview price" aria-valuemin="8" aria-valuemax="36" aria-valuenow="16" aria-valuetext="100K pageview for 16 USD per month">
                         <div id="slider-shadow"></div>
                     </div>
                     <div class="discount-sec">
                         <p>Monthly Billing</p>
-                        <div id="discount-btn-sec">
-                            <input type="checkbox" id="discount-check" class="discount-tgl visually-hidden"></input>
-                            <label for="discount-check"></label>
+                        <div id="discount-btn-sec" aria-live="assertive" aria-atomic="true">
+                            <input type="checkbox" id="discount-check" class="discount-tgl visually-hidden" tabindex="-1"/>
+                            <label for="discount-check" tabindex="0"><span class="visually-hidden" id="label-update">Monthly Billing selected</span></label>
                         </div>
                         <p>Yearly Billing</p>
                         <div class="discount-amount-sec">
-                            <button class="discount-amount">-25&#37;<span class="discount-text">discount</span></button>
+                            <button tabindex="-1" class="discount-amount">-25&#37;<span class="discount-text">discount</span></button>
                         </div>
                     </div>
                 </div>

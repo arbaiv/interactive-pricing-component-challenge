@@ -3,7 +3,6 @@
   --soft-cyan: hsl(174, 77%, 80%);
   --strong-cyan: hsl(174, 86%, 45%);
   --very-light-grayish-blue: hsl(224, 65%, 95%);
-  
   --light-grayish-Red: hsl(14, 92%, 95%);
   --light-red: hsl(15, 100%, 70%);
   --pale-blue: hsl(226, 100%, 87%);
@@ -12,7 +11,6 @@
   --light-grayish-blue: hsl(223, 50%, 87%);
   --grayish-blue: hsl(225, 20%, 60%);
   --dark-desaturated-blue: hsl(227, 35%, 25%);
-
   --bg-clr: var(--very-pale-blue);
   --text-clr: var(--grayish-blue);
   --header-clr: var(--dark-desaturated-blue);
@@ -22,8 +20,6 @@
   --discount-text-clr: var(--light-red);
   --cta-bg-clr: var(--dark-desaturated-blue);
   --cta-text-clr: var(--pale-blue);
-
-
   /* Font Size */
   --fs-300: 1rem;
   --fs-400: 1.25rem;
@@ -33,7 +29,6 @@
   --fw-400: 400;
   --fw-600: 600;
   --fw-800: 800;
-
   --fs-header: var(--fs-400);
   --fw-header: var(--fw-800);
   --fs-body: var(--fs-300);
@@ -46,7 +41,6 @@
     --fs-price: var(--fs-700);
   }
 }
-
 /* Css Reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -56,12 +50,10 @@
     padding: 0;
     font: inherit; 
 }
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
-/* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
@@ -70,7 +62,6 @@ line-height: 1.5;
 text-rendering: optimizeSpeed;
 -webkit-font-smoothing: antialiased;
 }
-/* A elements that don't have a class get default styles */
 a:not([class]) {
     text-decoration-skip-ink: auto;
 }
@@ -87,7 +78,6 @@ overflow-wrap: break-word;
 #root, #__next {
 isolation: isolate;
 }
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
     html:focus-within {
       scroll-behavior: auto;
@@ -248,7 +238,11 @@ input[type=range]::-moz-range-track {
   background: #3071a9;
   border-radius: 1.3px;
   border: 0.2px solid #010101;
-} 
+}
+input[type=range]:focus-visible {
+  outline: 2px solid #23AEA1;
+  border-radius: 10px;
+}
 .pricing {
   margin-top: 34px;
   order: 2;
@@ -304,6 +298,10 @@ input[type="checkbox"].discount-tgl:checked + label::before{
 }
 input[type="checkbox"].discount-tgl:checked + label::after{
   transform: translateX(150%);
+}
+input[type="checkbox"].discount-tgl + label:focus-visible {
+  outline: 2px solid #23AEA1;
+  border-radius: 16px;
 }
 .discount-amount-sec{
   position: relative;
@@ -364,6 +362,9 @@ input[type="checkbox"].discount-tgl:checked + label::after{
 }
 .cta-button:hover {
   color: var(--white);
+}
+.cta-button:focus-visible {
+  outline: 2px solid #23AEA1;
 }
 @media (min-width: 31em){
   input[type="checkbox"].discount-tgl + label{

@@ -3,6 +3,8 @@ const pageViewEl = document.getElementById("pageView");
 const priceValueEl = document.getElementById("priceValue");
 const sliderShadow = document.getElementById("slider-shadow");
 const discountEl = document.getElementById("discount-check");
+const discountLabel = document.getElementById("label-update");
+const discountSec = document.querySelector("#discount-btn-sec label");
 const sliderData = [
     {
         assignedValue: 0,
@@ -47,10 +49,39 @@ function updatePrice(sliderValue){
             sliderShadow.style.setProperty("width", "calc(" + value.shadowWidth + ")");
         }
     });
+    sliderAriaControl();
 }
 slider.addEventListener("input", function(){
     updatePrice(parseInt(this.value));
 });
 discountEl.addEventListener("input", function(){
     updatePrice(parseInt(slider.value));
+});
+
+// For Slider Accessibility
+function sliderAriaControl(){
+    slider.setAttribute("aria-valuenow", priceValueEl.textContent);
+    slider.setAttribute("aria-valuetext", `${pageViewEl.textContent} pageview for ${priceValueEl.textContent} usd per month`);
+    function sliderAttr(minValue, maxValue){
+        slider.setAttribute("aria-valuemin", minValue);
+        slider.setAttribute("aria-valuemax", maxValue);
+    }
+    if (discountEl.checked){
+        sliderAttr("6", "27");
+        discountLabel.textContent = "Yearly billing selected";
+    } else {
+        sliderAttr("8", "36");
+        discountLabel.textContent = "Monthly billing selected";
+    }
+}
+discountSec.addEventListener("keypress", function(e){
+    if(e.keyCode === 13){
+        if(discountEl.checked){
+            discountEl.checked = false;
+            updatePrice(parseInt(slider.value));
+        } else {
+            discountEl.checked = true;
+            updatePrice(parseInt(slider.value));
+        }
+    }
 });
